@@ -11,12 +11,52 @@
         />
       </nuxt-link>
 
-      <v-spacer></v-spacer>
+      <!-- Contenedor para los enlaces de navegación -->
+      <div class="nav-links">
+        <!-- Menú desplegable en hover -->
+        <v-menu open-on-hover offset-y close-on-content-click>
+          <template v-slot:activator="{ props }">
+            <nuxt-link to="/" v-bind="props" class="nav-item">
+              DEPILACIÓN LÁSER
+            </nuxt-link>
+          </template>
 
-      <!-- Carrito alineado a la derecha -->
-      <v-btn icon to="/checkout/checkout">
-        <v-icon class="cart-icon">mdi-cart-outline</v-icon>
-      </v-btn>
+          <v-card class="submenu">
+            <v-container>
+              <v-row>
+                <!-- Primera columna: Depilación Femenina -->
+                <v-col cols="6">
+                  <h4>Depilación Femenina</h4>
+                  <v-list density="compact">
+                    <v-list-item to="/depilacion-femenina/cuerpo"
+                      >Cuerpo</v-list-item
+                    >
+                    <v-list-item to="/depilacion-femenina/rostro"
+                      >Rostro</v-list-item
+                    >
+                  </v-list>
+                </v-col>
+
+                <!-- Segunda columna: Depilación Masculina -->
+                <v-col cols="6">
+                  <h4>Depilación Masculina</h4>
+                  <v-list density="compact">
+                    <v-list-item to="/depilacion-masculina/cuerpo"
+                      >Cuerpo</v-list-item
+                    >
+                    <v-list-item to="/depilacion-masculina/rostro"
+                      >Rostro</v-list-item
+                    >
+                  </v-list>
+                </v-col>
+              </v-row>
+            </v-container>
+          </v-card>
+        </v-menu>
+
+        <!-- Otros enlaces -->
+        <nuxt-link to="/" class="nav-item">OTROS TRATAMIENTOS</nuxt-link>
+      </div>
     </v-app-bar>
 
     <!-- Contenido principal -->
@@ -69,11 +109,38 @@ onUnmounted(() => {
 
 /* Tamaño del logo */
 .depilum-logo {
-  height: 3.5rem;
+  height: 4.5rem;
 }
 
-/* Estilo del botón del carrito */
-.cart-icon {
-  font-size: 2rem;
+/* Estilos para los enlaces de navegación */
+.nav-links {
+  display: flex;
+  gap: 2rem; /* Espacio entre los enlaces */
+  margin-left: 2rem; /* Separación del logo */
+}
+
+/* Estilo del submenú */
+.submenu {
+  min-width: 300px;
+  padding: 1rem;
+  background: white;
+}
+
+.submenu h4 {
+  font-size: 1rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.v-list-item {
+  font-size: 0.9rem;
+}
+
+/* Estilo para los enlaces */
+.nav-item {
+  text-decoration: none;
+  color: inherit;
+  font-weight: bold;
+  font-size: 1rem;
 }
 </style>
