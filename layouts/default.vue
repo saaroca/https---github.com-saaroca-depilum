@@ -1,8 +1,6 @@
 <template>
   <v-app>
-    <!-- Barra de navegación -->
     <v-app-bar fixed app class="app-bar">
-      <!-- Logo alineado a la izquierda -->
       <nuxt-link to="/" class="logo-container">
         <img
           class="depilum-logo"
@@ -26,7 +24,9 @@
               <v-row>
                 <!-- Primera columna: Depilación Femenina -->
                 <v-col cols="6">
-                  <h4>Depilación Femenina</h4>
+                  <v-list-item to="/depilacion-femenina/femenina"
+                    ><h4>Depilación Femenina</h4></v-list-item
+                  >
                   <v-list density="compact">
                     <v-list-item to="/depilacion-femenina/cuerpo"
                       >Cuerpo</v-list-item
@@ -39,7 +39,9 @@
 
                 <!-- Segunda columna: Depilación Masculina -->
                 <v-col cols="6">
-                  <h4>Depilación Masculina</h4>
+                  <v-list-item to="/depilacion-masculina/masculina">
+                    <h4>Depilación Masculina</h4></v-list-item
+                  >
                   <v-list density="compact">
                     <v-list-item to="/depilacion-masculina/cuerpo"
                       >Cuerpo</v-list-item
@@ -54,8 +56,31 @@
           </v-card>
         </v-menu>
 
-        <!-- Otros enlaces -->
-        <nuxt-link to="/" class="nav-item">OTROS TRATAMIENTOS</nuxt-link>
+        <!-- Menú desplegable en hover -->
+        <v-menu open-on-hover offset-y close-on-content-click>
+          <template v-slot:activator="{ props }">
+            <nuxt-link to="/" v-bind="props" class="nav-item">
+              OTROS TRATAMIENTOS
+            </nuxt-link>
+          </template>
+
+          <v-card class="submenu">
+            <v-container>
+              <v-row>
+                <v-col>
+                  <v-list-item to="/otros-tratamientos/eliminacion-laser"
+                    >Eliminación de tatuajes con laser</v-list-item
+                  >
+                  <v-list density="compact">
+                    <v-list-item to="/otros-tratamientos/pestañas"
+                      >Pestañas</v-list-item
+                    >
+                  </v-list>
+                </v-col>
+              </v-row>
+            </v-container>
+          </v-card>
+        </v-menu>
       </div>
     </v-app-bar>
 
